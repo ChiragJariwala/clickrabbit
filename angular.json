@@ -84,12 +84,42 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/queries.css"
             ],
             "scripts": []
+          }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "clickrabbit:ionic-cordova-build",
+            "devServerTarget": "clickrabbit:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "clickrabbit:ionic-cordova-build:production",
+              "devServerTarget": "clickrabbit:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "clickrabbit:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "clickrabbit:build:production"
+            }
           }
         }
       }
